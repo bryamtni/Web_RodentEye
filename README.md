@@ -33,11 +33,19 @@ npm run preview   # sirve dist/ localmente
 
 **Pruebas — GitHub Pages:** https://bryamtni.github.io/Web_RodentEye/ (repo público mientras dure el desarrollo; pasarlo a privado al salir a producción). Cada push a `main` ejecuta `.github/workflows/pages.yml`. El workflow compila con `BASE_PATH=/Web_RodentEye/` y marca el sitio como `noindex`.
 
-**Producción — IIS de la empresa:**
-1. `npm run build` (sin variables: `site` = `https://rodent-eye.com`, base `/`). Si el dominio cambia, ajustar `site` en `astro.config.mjs`.
-2. Copiar el contenido de `dist/` a `W:\DoItYourself\Web` (servidor de TICAM, junto a `ApiApplication` y `ApiCamera`). Copiar solo el contenido de `dist/`, no la carpeta misma.
-3. DNS: `rodent-eye.com` está en el **Cloudflare** de los administradores (Sergio, 2026-11-11). Cloudflare puede encargarse del certificado del lado público, de HTTP → HTTPS y de `www`.
-4. Sitio IIS propio: App Pool "No Managed Code", bindings con host name para `rodent-eye.com` y `www.rodent-eye.com` (80 y 443 con SNI) y certificado HTTPS. El servidor **no tiene URL Rewrite**: `web.config` no lo usa (agregar `<rewrite>` rompe el sitio con error 500.19). HTTP → HTTPS y HSTS los pone la configuración que ya usan los de servidores.
+**Producción — IIS de la empresa** (servidor TICAM, sitio `rodent-eye.com`, publicado por Sergio el 2026-11-11; DNS en Cloudflare):
+1. Generar el zip:
+   ```sh
+   rm -rf dist && PUBLIC_NOINDEX=true npm run build
+   mkdir -p deploy && (cd dist && zip -qr ../deploy/rodent-eye-web-$(date +%Y%m%d-%H%M).zip . -x '.DS_Store')
+   ```
+   - `PUBLIC_NOINDEX=true` evita que Google indexe el sitio mientras los textos legales sean borradores. Quitarlo cuando Juan y el abogado los aprueben.
+   - `deploy/` está en `.gitignore`.
+2. En el servidor, **reemplazar** el contenido de `W:\DoItYourself\Web` por el del zip: los archivos sueltos van directo en la carpeta, sin subcarpeta `dist`. Incluye `web.config` y `404.html`.
+3. Si se ve la versión anterior, purgar la caché en Cloudflare (Caching → Purge Everything) o esperar unos minutos.
+4. Revisar `https://rodent-eye.com/`, `/privacy/` y `/support/`. Si aparece un **error 500**, probablemente IIS rechazó una sección de `web.config`; avisar con la captura.
+
+`web.config` no usa URL Rewrite. HTTP → HTTPS y HSTS se configuran en Cloudflare ("Always Use HTTPS").
 
 ## Pendientes
 
