@@ -8,6 +8,7 @@ const ru: Dict = {
     terms: 'Условия',
     deleteAccount: 'Удаление аккаунта',
     language: 'Язык',
+    theme: 'Переключить светлую/тёмную тему',
   },
   common: {
     tagline: 'Мониторинг вредителей',

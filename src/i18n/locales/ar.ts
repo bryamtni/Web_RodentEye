@@ -8,6 +8,7 @@ const ar: Dict = {
     terms: 'الشروط',
     deleteAccount: 'حذف الحساب',
     language: 'اللغة',
+    theme: 'التبديل بين الوضع الفاتح والداكن',
   },
   common: {
     tagline: 'مراقبة الآفات',

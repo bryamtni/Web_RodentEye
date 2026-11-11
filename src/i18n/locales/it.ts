@@ -8,6 +8,7 @@ const it: Dict = {
     terms: 'Termini',
     deleteAccount: 'Elimina account',
     language: 'Lingua',
+    theme: 'Cambia modalità chiara/scura',
   },
   common: {
     tagline: 'Monitoraggio dei roditori',

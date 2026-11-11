@@ -10,6 +10,7 @@ const en: Dict = {
     terms: 'Terms',
     deleteAccount: 'Delete account',
     language: 'Language',
+    theme: 'Switch light/dark mode',
   },
   common: {
     tagline: 'Pest monitoring',

@@ -8,6 +8,7 @@ const uk: Dict = {
     terms: 'Умови',
     deleteAccount: 'Видалити обліковий запис',
     language: 'Мова',
+    theme: 'Перемкнути світлий/темний режим',
   },
   common: {
     tagline: 'Моніторинг шкідників',

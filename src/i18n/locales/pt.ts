@@ -8,6 +8,7 @@ const pt: Dict = {
     terms: 'Termos',
     deleteAccount: 'Excluir conta',
     language: 'Idioma',
+    theme: 'Alternar modo claro/escuro',
   },
   common: {
     tagline: 'Monitoramento de pragas',

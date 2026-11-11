@@ -8,6 +8,7 @@ const fr: Dict = {
     terms: 'Conditions',
     deleteAccount: 'Supprimer le compte',
     language: 'Langue',
+    theme: 'Basculer entre mode clair et sombre',
   },
   common: {
     tagline: 'Surveillance des nuisibles',

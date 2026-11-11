@@ -38,6 +38,13 @@ const noindex = import.meta.env.PUBLIC_NOINDEX === 'true';
     )}
     <link rel="icon" type="image/png" href={asset('favicon.png')} />
     <link rel="apple-touch-icon" href={asset('apple-touch-icon.png')} />
+    <script is:inline>
+      // Tema elegido con el botón del encabezado; sin elección, sigue al dispositivo.
+      try {
+        const t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      } catch {}
+    </script>
     <meta name="theme-color" content="#f7f9f3" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0d0d0d" media="(prefers-color-scheme: dark)" />
     <meta property="og:type" content="website" />

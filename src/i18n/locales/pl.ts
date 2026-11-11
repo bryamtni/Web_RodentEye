@@ -8,6 +8,7 @@ const pl: Dict = {
     terms: 'Regulamin',
     deleteAccount: 'Usuń konto',
     language: 'Język',
+    theme: 'Przełącz tryb jasny/ciemny',
   },
   common: {
     tagline: 'Monitorowanie szkodników',

@@ -8,6 +8,7 @@ const sq: Dict = {
     terms: 'Kushtet',
     deleteAccount: 'Fshi llogarinë',
     language: 'Gjuha',
+    theme: 'Ndrysho modalitetin e çelët/të errët',
   },
   common: {
     tagline: 'Monitorimi i dëmtuesve',

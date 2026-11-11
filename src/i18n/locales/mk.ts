@@ -8,6 +8,7 @@ const mk: Dict = {
     terms: 'Услови',
     deleteAccount: 'Бришење сметка',
     language: 'Јазик',
+    theme: 'Промени светол/темен режим',
   },
   common: {
     tagline: 'Следење штетници',

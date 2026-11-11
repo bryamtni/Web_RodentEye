@@ -8,6 +8,7 @@ const ka: Dict = {
     terms: 'პირობები',
     deleteAccount: 'ანგარიშის წაშლა',
     language: 'ენა',
+    theme: 'ნათელი/მუქი რეჟიმის გადართვა',
   },
   common: {
     tagline: 'მავნებლების მონიტორინგი',

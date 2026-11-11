@@ -1,56 +1,47 @@
-/* Colores de Docs/DESIGN_GUIDE.md (app Rodent Eye) */
 :root {
   /* Marca (Docs/DESIGN_GUIDE.md de la app) */
   --brand-black: #0d0d0d;
   --brand-green: #aaed26;
   --brand-green-hover: #c0f450;
 
-  /* Colores por función. Tema claro por defecto (opción B, 2026-11-11);
-     el oscuro de la marca se activa con el modo oscuro del dispositivo. Ver docs/DESIGN.md */
-  --bg: #f7f9f3;
-  --surface: #ffffff;
-  --surface-2: #ffffff;
-  --line: #e1e6d8;
-  --text: #2e3529;
-  --heading: #0d0d0d;
-  --muted: #5f6758;
-  --link: #3d6b0c;
-  --link-hover: #2c4815;
+  /* Colores por función: light-dark(claro, oscuro). El tema sigue al dispositivo, salvo que
+     la persona elija uno con el botón del encabezado (data-theme en <html>). Ver docs/DESIGN.md */
+  --bg: light-dark(#f7f9f3, #0d0d0d);
+  --surface: light-dark(#ffffff, #1c1c1c);
+  --surface-2: light-dark(#ffffff, #262626);
+  --line: light-dark(#e1e6d8, #333333);
+  --text: light-dark(#2e3529, #c4c4c4);
+  --heading: light-dark(#0d0d0d, #ffffff);
+  --muted: light-dark(#5f6758, #9a9a9a);
+  --link: light-dark(#3d6b0c, #aaed26);
+  --link-hover: light-dark(#2c4815, #c0f450);
   --accent: #aaed26;
   --accent-hover: #c0f450;
   --on-accent: #0d0d0d;
   --rule: #aaed26;
-  --header-bg: rgba(247, 249, 243, .9);
-  --glow: rgba(170, 237, 38, .22);
-  --ring: rgba(125, 184, 26, .55);
-  --ring-halo: rgba(170, 237, 38, .12);
-  --shadow: 0 8px 24px rgba(0, 0, 0, .12);
+  --header-bg: light-dark(rgba(247, 249, 243, .9), rgba(13, 13, 13, .88));
+  --glow: light-dark(rgba(170, 237, 38, .22), rgba(170, 237, 38, .10));
+  --ring: light-dark(rgba(125, 184, 26, .55), rgba(170, 237, 38, .45));
+  --ring-halo: light-dark(rgba(170, 237, 38, .12), rgba(170, 237, 38, .04));
+  --shadow: 0 8px 28px light-dark(rgba(0, 0, 0, .12), rgba(0, 0, 0, .7));
 
   --font-sans: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', 'Noto Sans', sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
   --radius: 14px;
   --max: 1120px;
-  color-scheme: light;
+  color-scheme: light dark;
 }
+:root[data-theme='light'] { color-scheme: light; }
+:root[data-theme='dark'] { color-scheme: dark; }
 
-@media (prefers-color-scheme: dark) {
+/* Navegadores sin light-dark() (Safari < 17.5): solo tema claro. */
+@supports not (color: light-dark(#000, #fff)) {
   :root {
-    --bg: #0d0d0d;
-    --surface: #1c1c1c;
-    --surface-2: #262626;
-    --line: #333333;
-    --text: #c4c4c4;
-    --heading: #ffffff;
-    --muted: #9a9a9a;
-    --link: #aaed26;
-    --link-hover: #c0f450;
-    --rule: #aaed26;
-    --header-bg: rgba(13, 13, 13, .88);
-    --glow: rgba(170, 237, 38, .10);
-    --ring: rgba(170, 237, 38, .45);
-    --ring-halo: rgba(170, 237, 38, .04);
-    --shadow: 0 8px 32px rgba(0, 0, 0, .7);
-    color-scheme: dark;
+    --bg: #f7f9f3; --surface: #ffffff; --surface-2: #ffffff; --line: #e1e6d8;
+    --text: #2e3529; --heading: #0d0d0d; --muted: #5f6758; --link: #3d6b0c; --link-hover: #2c4815;
+    --header-bg: rgba(247, 249, 243, .9); --glow: rgba(170, 237, 38, .22);
+    --ring: rgba(125, 184, 26, .55); --ring-halo: rgba(170, 237, 38, .12);
+    --shadow: 0 8px 28px rgba(0, 0, 0, .12);
   }
 }
 

@@ -8,6 +8,7 @@ const tr: Dict = {
     terms: 'Koşullar',
     deleteAccount: 'Hesabı sil',
     language: 'Dil',
+    theme: 'Açık/koyu modu değiştir',
   },
   common: {
     tagline: 'Haşere takibi',

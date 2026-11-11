@@ -10,7 +10,7 @@ export interface LegalDoc {
 }
 
 export interface Dict {
-  nav: { home: string; support: string; privacy: string; terms: string; deleteAccount: string; language: string };
+  nav: { home: string; support: string; privacy: string; terms: string; deleteAccount: string; language: string; theme: string };
   common: {
     tagline: string;
     draft: string;

@@ -8,6 +8,7 @@ const es: Dict = {
     terms: 'Términos',
     deleteAccount: 'Eliminar cuenta',
     language: 'Idioma',
+    theme: 'Cambiar modo claro/oscuro',
   },
   common: {
     tagline: 'Monitoreo de plagas',
