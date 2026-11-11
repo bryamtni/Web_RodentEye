@@ -345,7 +345,7 @@ const fr: Dict = {
       },
       {
         heading: 'Droit applicable',
-        blocks: ['Ces conditions sont régies par les lois de l’État de [à confirmer], États-Unis, sans égard à ses règles de conflit de lois.'],
+        blocks: ['Ces conditions sont régies par les lois de l’État de Floride, États-Unis, sans égard à ses règles de conflit de lois.'],
       },
       {
         heading: 'Modifications de ces conditions',

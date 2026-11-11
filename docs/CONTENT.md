@@ -109,4 +109,4 @@ Los textos dicen cómo **debe** funcionar el servicio. Hoy hay diferencias que h
 5. **No hay plazo de conservación.** La política dice "mientras tu cuenta esté activa". Si se define un plazo (por ejemplo, borrar eventos de más de N días), hay que actualizar privacidad.
 6. **"30 days" para borrar sin la app** es una propuesta (Google pide "un plazo razonable"). Confirmar que soporte puede cumplirlo.
 7. **Dentro de la app debe haber un enlace a la política de privacidad** (Apple 5.1.1(i)). Es tarea de la app, cuando la URL esté publicada.
-8. **Términos:** falta definir el estado cuyas leyes aplican (`[to be confirmed]`) y que el abogado revise la edad mínima (18) y el límite de responsabilidad.
+8. **Términos:** se rigen por las leyes de **Florida** (decisión provisional de Bryam, 2026-11-11: TNI está hoy en Orlando). Falta que el abogado revise eso, la edad mínima (18) y el límite de responsabilidad.

@@ -345,7 +345,7 @@ const pt: Dict = {
       },
       {
         heading: 'Lei aplicável',
-        blocks: ['Estes termos são regidos pelas leis do Estado de [a confirmar], EUA, sem considerar suas normas sobre conflito de leis.'],
+        blocks: ['Estes termos são regidos pelas leis do Estado da Flórida, EUA, sem considerar suas normas sobre conflito de leis.'],
       },
       {
         heading: 'Alterações nestes termos',

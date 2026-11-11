@@ -345,7 +345,7 @@ const sq: Dict = {
       },
       {
         heading: 'Ligji në fuqi',
-        blocks: ['Këto kushte rregullohen nga ligjet e Shtetit të [për t’u konfirmuar], SHBA, pa marrë parasysh rregullat e tij për konfliktin e ligjeve.'],
+        blocks: ['Këto kushte rregullohen nga ligjet e Shtetit të Floridës, SHBA, pa marrë parasysh rregullat e tij për konfliktin e ligjeve.'],
       },
       {
         heading: 'Ndryshimet në këto kushte',

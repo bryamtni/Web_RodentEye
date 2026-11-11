@@ -346,7 +346,7 @@ const tr: Dict = {
       {
         heading: 'Geçerli hukuk',
         blocks: [
-          'Bu koşullar, kanunlar ihtilafı kuralları dikkate alınmaksızın ABD’nin [teyit edilecek] Eyaleti yasalarına tabidir.',
+          'Bu koşullar, kanunlar ihtilafı kuralları dikkate alınmaksızın ABD’nin Florida Eyaleti yasalarına tabidir.',
         ],
       },
       {

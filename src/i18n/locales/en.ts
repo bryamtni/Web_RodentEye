@@ -346,7 +346,7 @@ const en: Dict = {
       },
       {
         heading: 'Governing law',
-        blocks: ['These terms are governed by the laws of the State of [to be confirmed], USA, without regard to its conflict of law rules.'],
+        blocks: ['These terms are governed by the laws of the State of Florida, USA, without regard to its conflict of law rules.'],
       },
       {
         heading: 'Changes to these terms',

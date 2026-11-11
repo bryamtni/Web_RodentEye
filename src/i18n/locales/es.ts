@@ -345,7 +345,7 @@ const es: Dict = {
       },
       {
         heading: 'Ley aplicable',
-        blocks: ['Estos términos se rigen por las leyes del Estado de [por confirmar], EE. UU., sin tener en cuenta sus normas sobre conflictos de leyes.'],
+        blocks: ['Estos términos se rigen por las leyes del Estado de Florida, EE. UU., sin tener en cuenta sus normas sobre conflictos de leyes.'],
       },
       {
         heading: 'Cambios a estos términos',

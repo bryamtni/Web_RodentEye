@@ -346,7 +346,7 @@ const pl: Dict = {
       {
         heading: 'Prawo właściwe',
         blocks: [
-          'Niniejszy regulamin podlega prawu stanu [do potwierdzenia], USA, z wyłączeniem jego norm kolizyjnych.',
+          'Niniejszy regulamin podlega prawu stanu Floryda, USA, z wyłączeniem jego norm kolizyjnych.',
         ],
       },
       {

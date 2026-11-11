@@ -346,7 +346,7 @@ const it: Dict = {
       {
         heading: 'Legge applicabile',
         blocks: [
-          'Questi termini sono regolati dalle leggi dello Stato di [da confermare], USA, senza riguardo alle sue norme sui conflitti di leggi.',
+          'Questi termini sono regolati dalle leggi dello Stato della Florida, USA, senza riguardo alle sue norme sui conflitti di leggi.',
         ],
       },
       {
