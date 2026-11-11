@@ -256,7 +256,7 @@ const tr: Dict = {
           [
             'Hesap bilgileriniz: ad, kullanıcı adı, e-posta, telefon numarası ve şifre.',
             'Adresleriniz ve kameralarınız.',
-            'Fotoğrafları ve videoları dahil tüm kamera olayları.',
+            'Tüm kamera olayları. Hesabınızdan hemen kaybolur; sunucularımızda saklanan fotoğraf ve video dosyaları ise daha sonra ayrı bir işlemle silinir.',
             'Bildirimleriniz ve telefonunuz ile hesabınız arasındaki bağlantı.',
             'Silme işlemi için kullandığınız telefonda, uygulamanın kaydettiği Wi-Fi şifreleri.',
           ],

@@ -256,7 +256,7 @@ const it: Dict = {
           [
             'Le informazioni del tuo account: nome, nome utente, email, numero di telefono e password.',
             'I tuoi indirizzi e le tue telecamere.',
-            'Tutti gli eventi delle telecamere, comprese le relative foto e video.',
+            'Tutti gli eventi delle telecamere. Scompaiono subito dal tuo account; i file di foto e video conservati sui nostri server vengono eliminati in seguito, con un processo separato.',
             'Le tue notifiche e il collegamento tra il tuo telefono e il tuo account.',
             'Sul telefono che usi per eliminarlo, le password del Wi-Fi salvate dall’app.',
           ],

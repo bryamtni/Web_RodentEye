@@ -36,7 +36,8 @@ npm run preview   # sirve dist/ localmente
 **Producción — IIS de la empresa:**
 1. `npm run build` (sin variables: `site` = `https://rodent-eye.com`, base `/`). Si el dominio cambia, ajustar `site` en `astro.config.mjs`.
 2. Copiar el contenido de `dist/` a `W:\DoItYourself\Web` (servidor de TICAM, junto a `ApiApplication` y `ApiCamera`). Copiar solo el contenido de `dist/`, no la carpeta misma.
-3. Sitio IIS propio: App Pool "No Managed Code", bindings con host name para `rodent-eye.com` y `www.rodent-eye.com` (80 y 443 con SNI) y certificado HTTPS. El servidor **no tiene URL Rewrite**: `web.config` no lo usa (agregar `<rewrite>` rompe el sitio con error 500.19). HTTP → HTTPS y HSTS los pone la configuración que ya usan los de servidores.
+3. DNS: `rodent-eye.com` está en el **Cloudflare** de los administradores (Sergio, 2026-11-11). Cloudflare puede encargarse del certificado del lado público, de HTTP → HTTPS y de `www`.
+4. Sitio IIS propio: App Pool "No Managed Code", bindings con host name para `rodent-eye.com` y `www.rodent-eye.com` (80 y 443 con SNI) y certificado HTTPS. El servidor **no tiene URL Rewrite**: `web.config` no lo usa (agregar `<rewrite>` rompe el sitio con error 500.19). HTTP → HTTPS y HSTS los pone la configuración que ya usan los de servidores.
 
 ## Pendientes
 

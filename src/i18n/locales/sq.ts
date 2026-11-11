@@ -256,7 +256,7 @@ const sq: Dict = {
           [
             'Informacionin e llogarisë suaj: emrin, emrin e përdoruesit, emailin, numrin e telefonit dhe fjalëkalimin.',
             'Adresat dhe kamerat tuaja.',
-            'Të gjitha ngjarjet e kamerave, përfshirë fotot dhe videot e tyre.',
+            'Të gjitha ngjarjet e kamerave. Ato zhduken menjëherë nga llogaria juaj; skedarët e fotove dhe videove të ruajtur në serverët tanë fshihen më pas, në një proces të veçantë.',
             'Njoftimet tuaja dhe lidhjen midis telefonit dhe llogarisë suaj.',
             'Në telefonin me të cilin e fshini, fjalëkalimet e Wi-Fi-së të ruajtura nga aplikacioni.',
           ],

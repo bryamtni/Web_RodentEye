@@ -256,7 +256,7 @@ const pl: Dict = {
           [
             'Informacje o koncie: imię i nazwisko, nazwę użytkownika, adres e-mail, numer telefonu i hasło.',
             'Twoje adresy i kamery.',
-            'Wszystkie zdarzenia z kamer, w tym ich zdjęcia i filmy.',
+            'Wszystkie zdarzenia z kamer. Znikają z Twojego konta od razu; pliki zdjęć i filmów przechowywane na naszych serwerach są usuwane później, w osobnym procesie.',
             'Twoje powiadomienia i powiązanie Twojego telefonu z kontem.',
             'Na telefonie, z którego usuwasz konto, hasła do Wi-Fi zapisane przez aplikację.',
           ],

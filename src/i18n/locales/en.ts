@@ -257,7 +257,7 @@ const en: Dict = {
           [
             'Your account information: name, username, email, phone number and password.',
             'Your addresses and cameras.',
-            'All camera events, including their photos and videos.',
+            'All camera events. They disappear from your account right away; the photo and video files stored on our servers are deleted afterwards in a separate process.',
             'Your notifications and the link between your phone and your account.',
             'On the phone you use to delete it, the WiFi passwords saved by the app.',
           ],
