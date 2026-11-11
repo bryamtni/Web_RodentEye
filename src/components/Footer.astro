@@ -1,0 +1,34 @@
+---
+import Logo from './Logo.astro';
+import { type Lang, t, url } from '../i18n/ui';
+import { SITE } from '../config';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container cols">
+    <div>
+      <Logo size={30} />
+      <p class="tag">{t(lang, 'tagline')}</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href={url(lang, 'support')}>{t(lang, 'nav.support')}</a>
+      <a href={url(lang, 'privacy')}>{t(lang, 'nav.privacy')}</a>
+      <a href={url(lang, 'terms')}>{t(lang, 'nav.terms')}</a>
+      <a href={url(lang, 'delete-account')}>{t(lang, 'nav.delete')}</a>
+      <a href={`mailto:${SITE.supportEmail}`}>{SITE.supportEmail}</a>
+    </nav>
+  </div>
+  <div class="container legal">© {year} {SITE.company}. {t(lang, 'footer.rights')}</div>
+</footer>
+
+<style>
+  .site-footer { border-top: 1px solid var(--line); background: var(--charcoal); margin-top: 40px; }
+  .cols { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; padding-top: 40px; padding-bottom: 24px; }
+  .tag { margin: .6rem 0 0; font: .8rem var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  nav { display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; align-items: center; font-size: .92rem; }
+  nav a { color: var(--gray); text-decoration: none; }
+  nav a:hover { color: var(--green); }
+  .legal { padding-top: 16px; padding-bottom: 32px; font-size: .82rem; color: var(--muted); }
+</style>

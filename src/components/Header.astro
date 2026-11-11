@@ -1,0 +1,41 @@
+---
+import Logo from './Logo.astro';
+import { type Lang, t, url } from '../i18n/ui';
+interface Props { lang: Lang; page: string }
+const { lang, page } = Astro.props;
+const other: Lang = lang === 'en' ? 'es' : 'en';
+const links = [
+  { page: 'support', label: t(lang, 'nav.support') },
+  { page: 'privacy', label: t(lang, 'nav.privacy') },
+];
+---
+<header class="site-header">
+  <div class="container bar">
+    <a href={url(lang)} class="home" aria-label="Rodent Eye — {t(lang, 'nav.home')}"><Logo /></a>
+    <nav aria-label="Main">
+      {links.map((l) => (
+        <a href={url(lang, l.page)} aria-current={page === l.page ? 'page' : undefined}>{l.label}</a>
+      ))}
+      <a href={url(other, page)} hreflang={other} lang={other} class="lang">{t(lang, 'nav.switch')}</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(13, 13, 13, .85);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 64px; }
+  .home { text-decoration: none; }
+  nav { display: flex; align-items: center; gap: 1.1rem; font-size: .92rem; }
+  nav a { color: var(--gray); text-decoration: none; }
+  nav a:hover, nav a[aria-current='page'] { color: var(--white); }
+  .lang { border: 1px solid var(--line); border-radius: 999px; padding: .3rem .75rem; }
+  @media (max-width: 560px) {
+    .home :global(.word) { display: none; }
+    nav { gap: .8rem; font-size: .85rem; }
+  }
+</style>

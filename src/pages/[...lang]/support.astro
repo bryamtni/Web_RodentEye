@@ -1,0 +1,65 @@
+---
+import Base from '../../layouts/Base.astro';
+import { type Lang, langPaths, url } from '../../i18n/ui';
+import { SITE } from '../../config';
+
+export const getStaticPaths = langPaths;
+const { lang } = Astro.props as { lang: Lang };
+const mail = SITE.supportEmail;
+
+const c = {
+  en: {
+    title: 'Support',
+    description: 'Help with the Rodent Eye app and cameras: setup, notifications and your account.',
+    lead: 'Find quick answers below. If you still need help, write to us and include your email and the camera serial number.',
+    contact: 'Contact us',
+    faq: 'Frequently asked questions',
+    items: [
+      ['How do I connect a camera to my WiFi?', 'In the app, tap the “+” button in the bottom menu. Follow the steps: the app connects to the camera and sends it your WiFi name and password. The camera only works with 2.4 GHz networks.'],
+      ['I am not receiving notifications', 'Make sure notifications are allowed for Rodent Eye in your phone settings and that you are signed in. If you reinstalled the app, sign in again so your phone is registered.'],
+      ['The camera appears offline', 'Check that it has power and that your WiFi is working. If you changed your router or WiFi password, set the camera up again from the app.'],
+      ['I forgot my password', 'On the sign-in screen tap “Forgot password”. We will email you a code to create a new one.'],
+      ['How do I delete my account?', 'From the app or without it — see the steps on the account deletion page.'],
+    ],
+  },
+  es: {
+    title: 'Soporte',
+    description: 'Ayuda con la app y las cámaras Rodent Eye: configuración, notificaciones y tu cuenta.',
+    lead: 'Aquí tienes respuestas rápidas. Si aún necesitas ayuda, escríbenos e incluye tu correo y el número de serie de la cámara.',
+    contact: 'Contáctanos',
+    faq: 'Preguntas frecuentes',
+    items: [
+      ['¿Cómo conecto una cámara a mi WiFi?', 'En la app, toca el botón “+” del menú inferior. Sigue los pasos: la app se conecta a la cámara y le envía el nombre y la contraseña de tu WiFi. La cámara solo funciona con redes de 2.4 GHz.'],
+      ['No me llegan las notificaciones', 'Revisa que las notificaciones de Rodent Eye estén permitidas en los ajustes del teléfono y que hayas iniciado sesión. Si reinstalaste la app, vuelve a iniciar sesión para registrar tu teléfono.'],
+      ['La cámara aparece sin conexión', 'Revisa que tenga energía y que tu WiFi funcione. Si cambiaste el router o la contraseña del WiFi, vuelve a configurar la cámara desde la app.'],
+      ['Olvidé mi contraseña', 'En la pantalla de inicio de sesión toca “Olvidé mi contraseña”. Te enviaremos un código por correo para crear una nueva.'],
+      ['¿Cómo elimino mi cuenta?', 'Desde la app o sin ella: mira los pasos en la página de eliminación de cuenta.'],
+    ],
+  },
+}[lang];
+---
+<Base lang={lang} page="support" title={c.title} description={c.description}>
+  <div class="container prose">
+    <h1>{c.title}</h1>
+    <p>{c.lead}</p>
+    <div class="card contact">
+      <h2>{c.contact}</h2>
+      <p><a href={`mailto:${mail}`}>{mail}</a></p>
+    </div>
+    <h2>{c.faq}</h2>
+    {c.items.map(([q, a], i) => (
+      <details>
+        <summary>{q}</summary>
+        <p>{a}{i === c.items.length - 1 && <> <a href={url(lang, 'delete-account')}>→</a></>}</p>
+      </details>
+    ))}
+  </div>
+</Base>
+
+<style>
+  .contact h2 { margin-top: 0; }
+  .contact p { margin: 0; font-size: 1.1rem; }
+  details { border-bottom: 1px solid var(--line); padding: .9rem 0; }
+  summary { cursor: pointer; color: var(--white); font-weight: 600; }
+  details p { margin: .7rem 0 0; }
+</style>

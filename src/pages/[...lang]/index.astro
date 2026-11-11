@@ -1,0 +1,164 @@
+---
+import Base from '../../layouts/Base.astro';
+import { type Lang, langPaths, t, url, asset } from '../../i18n/ui';
+import { SITE } from '../../config';
+
+export const getStaticPaths = langPaths;
+const { lang } = Astro.props as { lang: Lang };
+
+const c = {
+  en: {
+    title: 'Rodent Eye — Smart rodent monitoring',
+    description: 'Wireless cameras that detect rodent activity and send photos and alerts straight to your phone.',
+    eyebrow: 'Pest monitoring',
+    h1: ['See rodent activity', 'the moment it happens.'],
+    lead: 'Rodent Eye cameras detect movement, capture photos and video, and send an alert to your phone so you can act before a small problem becomes a big one.',
+    how: 'How it works',
+    steps: [
+      ['Place the camera', 'Install a Rodent Eye camera where you suspect activity and connect it to your WiFi from the app.'],
+      ['It detects movement', 'When something moves, the camera captures photos and video and uploads them securely.'],
+      ['You get an alert', 'A notification reaches your phone. Open it to review the event and decide what to do.'],
+    ],
+    features: 'Everything in one app',
+    list: [
+      ['Instant alerts', 'Push notifications for every detection, wherever you are.'],
+      ['Photos and video', 'Review what each camera saw, event by event.'],
+      ['Several locations', 'Organize cameras by address: home, warehouse, restaurant.'],
+      ['Simple setup', 'Step-by-step WiFi setup from your phone, no technician needed.'],
+      ['Event history', 'Keep track of activity over time to spot patterns.'],
+      ['Local professionals', 'Find pest control companies in your area when you need help.'],
+    ],
+    download: 'Get the app',
+    downloadLead: 'Available for iPhone and Android.',
+    help: 'Questions? Visit support',
+  },
+  es: {
+    title: 'Rodent Eye — Monitoreo inteligente de roedores',
+    description: 'Cámaras inalámbricas que detectan actividad de roedores y envían fotos y alertas directo a tu teléfono.',
+    eyebrow: 'Monitoreo de plagas',
+    h1: ['Mira la actividad de roedores', 'en el momento en que ocurre.'],
+    lead: 'Las cámaras Rodent Eye detectan movimiento, toman fotos y video y envían una alerta a tu teléfono para que actúes antes de que un problema pequeño se vuelva grande.',
+    how: 'Cómo funciona',
+    steps: [
+      ['Coloca la cámara', 'Instala una cámara Rodent Eye donde sospechas actividad y conéctala a tu WiFi desde la app.'],
+      ['Detecta movimiento', 'Cuando algo se mueve, la cámara toma fotos y video y los sube de forma segura.'],
+      ['Recibes una alerta', 'Te llega una notificación al teléfono. Ábrela para revisar el evento y decidir qué hacer.'],
+    ],
+    features: 'Todo en una app',
+    list: [
+      ['Alertas al instante', 'Notificaciones por cada detección, estés donde estés.'],
+      ['Fotos y video', 'Revisa lo que vio cada cámara, evento por evento.'],
+      ['Varias ubicaciones', 'Organiza tus cámaras por dirección: casa, bodega, restaurante.'],
+      ['Configuración sencilla', 'Conecta la cámara al WiFi paso a paso desde el teléfono, sin técnico.'],
+      ['Historial de eventos', 'Sigue la actividad en el tiempo para detectar patrones.'],
+      ['Profesionales locales', 'Encuentra empresas de control de plagas en tu zona cuando necesites ayuda.'],
+    ],
+    download: 'Descarga la app',
+    downloadLead: 'Disponible para iPhone y Android.',
+    help: '¿Dudas? Visita soporte',
+  },
+}[lang];
+
+const stores = [
+  { label: t(lang, 'download.appstore'), href: SITE.appStoreUrl },
+  { label: t(lang, 'download.play'), href: SITE.playStoreUrl },
+];
+---
+<Base lang={lang} page="" title={c.title} description={c.description}>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">{c.eyebrow}</p>
+        <h1>{c.h1[0]} <span class="accent">{c.h1[1]}</span></h1>
+        <p class="lead">{c.lead}</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#download">{c.download}</a>
+          <a class="btn btn-ghost" href="#how">{c.how}</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="ring"></div>
+        <img src={asset('img/rodent-eye-mark.png')} width="160" height="160" alt="" />
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="section">
+    <div class="container">
+      <h2>{c.how}</h2>
+      <ol class="steps">
+        {c.steps.map(([title, body], i) => (
+          <li class="card">
+            <span class="num">0{i + 1}</span>
+            <h3>{title}</h3>
+            <p>{body}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>{c.features}</h2>
+      <ul class="features">
+        {c.list.map(([title, body]) => (
+          <li>
+            <h3>{title}</h3>
+            <p>{body}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section id="download" class="section">
+    <div class="container">
+      <div class="card download">
+        <div>
+          <h2>{c.download}</h2>
+          <p>{c.downloadLead}</p>
+        </div>
+        <div class="actions">
+          {stores.map((s) => s.href
+            ? <a class="btn btn-primary" href={s.href}>{s.label}</a>
+            : <span class="btn btn-ghost" aria-disabled="true">{s.label} · {t(lang, 'download.soon')}</span>)}
+        </div>
+      </div>
+      <p class="help"><a href={url(lang, 'support')}>{c.help} →</a></p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { padding: 72px 0 56px; border-bottom: 1px solid var(--line);
+    background: radial-gradient(60% 80% at 85% 40%, rgba(170, 237, 38, .10), transparent 70%); }
+  .hero-grid { display: grid; gap: 48px; align-items: center; }
+  @media (min-width: 860px) { .hero-grid { grid-template-columns: 1.3fr 1fr; } }
+  .accent { color: var(--green); }
+  .lead { font-size: 1.12rem; max-width: 560px; }
+  .actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
+  .hero-art { position: relative; display: grid; place-items: center; min-height: 260px; }
+  .hero-art img { width: 160px; border-radius: 50%; position: relative; }
+  .ring { position: absolute; width: 240px; height: 240px; border-radius: 50%;
+    border: 1px solid rgba(170, 237, 38, .45); box-shadow: 0 0 0 40px rgba(170, 237, 38, .04), 0 0 0 80px rgba(170, 237, 38, .025); }
+  @media (prefers-reduced-motion: no-preference) {
+    .ring { animation: pulse 3.2s ease-in-out infinite; }
+    @keyframes pulse { 50% { transform: scale(1.06); opacity: .7; } }
+  }
+  .section { padding: 64px 0 0; }
+  .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
+  @media (min-width: 760px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+  .num { font: 500 .85rem var(--font-mono); color: var(--green); display: block; margin-bottom: .8rem; }
+  .steps p, .features p { margin: 0; }
+  .features { list-style: none; padding: 0; margin: 0; display: grid; gap: 28px 32px; }
+  @media (min-width: 640px) { .features { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 960px) { .features { grid-template-columns: repeat(3, 1fr); } }
+  .features li { border-left: 2px solid var(--green); padding-left: 1rem; }
+  .features h3 { margin-bottom: .3em; }
+  .download { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; }
+  .download h2 { margin-bottom: .2em; }
+  .download p { margin: 0; }
+  .download .actions { margin-top: 0; }
+  .help { margin-top: 1.25rem; }
+</style>

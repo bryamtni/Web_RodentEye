@@ -1,0 +1,71 @@
+---
+// BORRADOR: requiere revisión legal antes de publicar en las tiendas.
+import Base from '../../layouts/Base.astro';
+import LegalHeader from '../../components/LegalHeader.astro';
+import { type Lang, langPaths, url } from '../../i18n/ui';
+import { SITE } from '../../config';
+
+export const getStaticPaths = langPaths;
+const { lang } = Astro.props as { lang: Lang };
+const mail = SITE.supportEmail;
+const es = lang === 'es';
+---
+<Base lang={lang} page="privacy" title={es ? 'Política de privacidad' : 'Privacy policy'}
+  description={es ? 'Qué datos recopila Rodent Eye, para qué los usa y cómo puedes pedir que se borren.' : 'What data Rodent Eye collects, how it is used and how to request its deletion.'}>
+  <article class="container prose">
+    <LegalHeader lang={lang} title={es ? 'Política de privacidad' : 'Privacy policy'} />
+    {es ? (
+      <>
+        <p>Esta política explica cómo {SITE.company} (“nosotros”) trata los datos personales de quienes usan la app y las cámaras Rodent Eye.</p>
+        <h2>Datos que recopilamos</h2>
+        <ul>
+          <li><strong>Cuenta:</strong> nombre, correo electrónico, teléfono y contraseña (guardada de forma protegida).</li>
+          <li><strong>Direcciones:</strong> las direcciones que registras y su ubicación en el mapa, para organizar tus cámaras.</li>
+          <li><strong>Cámaras y eventos:</strong> número de serie, configuración, y las fotos y videos que la cámara captura al detectar movimiento.</li>
+          <li><strong>Notificaciones:</strong> un identificador del dispositivo para enviarte alertas.</li>
+        </ul>
+        <h2>Para qué los usamos</h2>
+        <ul>
+          <li>Prestar el servicio: mostrarte los eventos de tus cámaras y avisarte cuando ocurren.</li>
+          <li>Darte soporte y comunicarnos contigo sobre tu cuenta.</li>
+          <li>Mostrarte empresas de control de plagas cerca de tus direcciones.</li>
+        </ul>
+        <p>No vendemos tus datos ni los usamos para publicidad.</p>
+        <h2>Con quién los compartimos</h2>
+        <p>Usamos <strong>OneSignal</strong> para enviar las notificaciones; recibe el identificador del dispositivo y el contenido de la alerta. No compartimos tus datos con otros terceros salvo que la ley lo exija.</p>
+        <h2>Cuánto tiempo los guardamos</h2>
+        <p>Mientras tu cuenta esté activa. Al eliminar la cuenta borramos tus datos y los de tus cámaras, salvo lo que la ley nos obligue a conservar.</p>
+        <h2>Tus derechos</h2>
+        <p>Puedes ver y corregir tus datos en la app, y pedir que los borremos. Mira cómo en <a href={url(lang, 'delete-account')}>Eliminar cuenta</a>.</p>
+        <h2>Contacto</h2>
+        <p>Escríbenos a <a href={`mailto:${mail}`}>{mail}</a>.</p>
+      </>
+    ) : (
+      <>
+        <p>This policy explains how {SITE.company} (“we”) handles the personal data of people who use the Rodent Eye app and cameras.</p>
+        <h2>Data we collect</h2>
+        <ul>
+          <li><strong>Account:</strong> name, email address, phone number and password (stored in protected form).</li>
+          <li><strong>Addresses:</strong> the addresses you register and their map location, used to organize your cameras.</li>
+          <li><strong>Cameras and events:</strong> serial number, settings, and the photos and videos the camera captures when it detects movement.</li>
+          <li><strong>Notifications:</strong> a device identifier used to send you alerts.</li>
+        </ul>
+        <h2>How we use it</h2>
+        <ul>
+          <li>To provide the service: show your cameras’ events and alert you when they happen.</li>
+          <li>To support you and contact you about your account.</li>
+          <li>To show pest control companies near your addresses.</li>
+        </ul>
+        <p>We do not sell your data or use it for advertising.</p>
+        <h2>Who we share it with</h2>
+        <p>We use <strong>OneSignal</strong> to send notifications; it receives the device identifier and the alert content. We do not share your data with other third parties unless required by law.</p>
+        <h2>How long we keep it</h2>
+        <p>While your account is active. When you delete your account we erase your data and your cameras’ data, except what the law requires us to keep.</p>
+        <h2>Your rights</h2>
+        <p>You can view and correct your data in the app and ask us to delete it. See how on <a href={url(lang, 'delete-account')}>Delete account</a>.</p>
+        <h2>Contact</h2>
+        <p>Write to us at <a href={`mailto:${mail}`}>{mail}</a>.</p>
+      </>
+    )}
+  </article>
+</Base>

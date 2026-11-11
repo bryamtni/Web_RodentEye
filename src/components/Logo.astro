@@ -1,0 +1,16 @@
+---
+import { asset } from '../i18n/ui';
+interface Props { size?: number }
+const { size = 36 } = Astro.props;
+---
+<span class="logo">
+  <img src={asset('img/rodent-eye-mark.png')} width={size} height={size} alt="" />
+  <span class="word">RODENT <span class="eye">EYE</span></span>
+</span>
+
+<style>
+  .logo { display: inline-flex; align-items: center; gap: .65rem; }
+  .logo img { border-radius: 50%; }
+  .word { font: 500 1.05rem/1 var(--font-mono); letter-spacing: .14em; color: var(--white); white-space: nowrap; }
+  .eye { color: var(--green); }
+</style>
