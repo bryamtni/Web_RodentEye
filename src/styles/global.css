@@ -1,40 +1,77 @@
 /* Colores de Docs/DESIGN_GUIDE.md (app Rodent Eye) */
 :root {
-  --black: #0d0d0d;
-  --charcoal: #1c1c1c;
-  --charcoal-2: #262626;
-  --line: #333333;
-  --green: #aaed26;
-  --green-hover: #c0f450;
-  --green-dark: #1a3305;
-  --white: #ffffff;
-  --gray: #c4c4c4;
-  --muted: #9a9a9a;
+  /* Marca (Docs/DESIGN_GUIDE.md de la app) */
+  --brand-black: #0d0d0d;
+  --brand-green: #aaed26;
+  --brand-green-hover: #c0f450;
+
+  /* Colores por función. Tema claro por defecto (opción B, 2026-11-11);
+     el oscuro de la marca se activa con el modo oscuro del dispositivo. Ver docs/DESIGN.md */
+  --bg: #f7f9f3;
+  --surface: #ffffff;
+  --surface-2: #ffffff;
+  --line: #e1e6d8;
+  --text: #2e3529;
+  --heading: #0d0d0d;
+  --muted: #5f6758;
+  --link: #3d6b0c;
+  --link-hover: #2c4815;
+  --accent: #aaed26;
+  --accent-hover: #c0f450;
+  --on-accent: #0d0d0d;
+  --rule: #aaed26;
+  --header-bg: rgba(247, 249, 243, .9);
+  --glow: rgba(170, 237, 38, .22);
+  --ring: rgba(125, 184, 26, .55);
+  --ring-halo: rgba(170, 237, 38, .12);
+  --shadow: 0 8px 24px rgba(0, 0, 0, .12);
+
   --font-sans: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', 'Noto Sans', sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
   --radius: 14px;
   --max: 1120px;
-  color-scheme: dark;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d0d0d;
+    --surface: #1c1c1c;
+    --surface-2: #262626;
+    --line: #333333;
+    --text: #c4c4c4;
+    --heading: #ffffff;
+    --muted: #9a9a9a;
+    --link: #aaed26;
+    --link-hover: #c0f450;
+    --rule: #aaed26;
+    --header-bg: rgba(13, 13, 13, .88);
+    --glow: rgba(170, 237, 38, .10);
+    --ring: rgba(170, 237, 38, .45);
+    --ring-halo: rgba(170, 237, 38, .04);
+    --shadow: 0 8px 32px rgba(0, 0, 0, .7);
+    color-scheme: dark;
+  }
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 body {
   margin: 0;
-  background: var(--black);
-  color: var(--gray);
+  background: var(--bg);
+  color: var(--text);
   font: 400 1rem/1.65 var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
 img { max-width: 100%; height: auto; display: block; }
-a { color: var(--green); text-underline-offset: 3px; }
-a:hover { color: var(--green-hover); }
-h1, h2, h3 { color: var(--white); line-height: 1.2; margin: 0 0 .6em; }
+a { color: var(--link); text-underline-offset: 3px; }
+a:hover { color: var(--link-hover); }
+h1, h2, h3 { color: var(--heading); line-height: 1.2; margin: 0 0 .6em; }
 h1 { font-size: clamp(2rem, 5vw, 3.25rem); letter-spacing: -0.02em; }
 h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); letter-spacing: -0.01em; }
 h3 { font-size: 1.1rem; }
 p { margin: 0 0 1em; }
-:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-radius: 4px; }
+:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; border-radius: 4px; }
 
 .container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 16px; }
 @media (min-width: 640px) { .container { padding: 0 24px; } }
@@ -43,7 +80,7 @@ p { margin: 0 0 1em; }
   font: 500 .78rem/1 var(--font-mono);
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: var(--green);
+  color: var(--link);
 }
 
 .btn {
@@ -52,10 +89,10 @@ p { margin: 0 0 1em; }
   font-weight: 600; text-decoration: none; border: 1px solid transparent;
   transition: background .15s, color .15s, border-color .15s;
 }
-.btn-primary { background: var(--green); color: var(--black); }
-.btn-primary:hover { background: var(--green-hover); color: var(--black); }
-.btn-ghost { border-color: var(--line); color: var(--white); }
-.btn-ghost:hover { border-color: var(--green); color: var(--green); }
+.btn-primary { background: var(--accent); color: var(--on-accent); }
+.btn-primary:hover { background: var(--accent-hover); color: var(--on-accent); }
+.btn-ghost { border-color: var(--line); color: var(--heading); }
+.btn-ghost:hover { border-color: var(--link); color: var(--link); }
 .btn[aria-disabled='true'] { opacity: .55; pointer-events: none; }
 
 /* Páginas de texto (privacidad, términos, soporte...) */
@@ -64,17 +101,17 @@ p { margin: 0 0 1em; }
 .prose h2 { font-size: 1.3rem; margin-top: 2.2em; }
 .prose ul, .prose ol { padding-inline-start: 1.3em; }
 .prose li { margin-bottom: .4em; }
-.prose strong { color: var(--white); }
+.prose strong { color: var(--heading); }
 .prose .meta { color: var(--muted); font-size: .9rem; }
 .draft {
-  border: 1px dashed var(--green); color: var(--green);
-  background: rgba(170, 237, 38, .06);
+  border: 1px dashed var(--link); color: var(--link);
+  background: var(--glow);
   padding: .7rem 1rem; border-radius: 10px; font-size: .9rem; margin-bottom: 2rem;
 }
 .note { color: var(--muted); font-size: .88rem; margin-bottom: 2rem; }
 .prose section h2 { scroll-margin-top: 80px; }
 
-.skip { position: absolute; inset-inline-start: 1rem; top: -100px; z-index: 20; background: var(--green); color: var(--black); padding: .5rem 1rem; border-radius: 8px; }
+.skip { position: absolute; inset-inline-start: 1rem; top: -100px; z-index: 20; background: var(--accent); color: var(--on-accent); padding: .5rem 1rem; border-radius: 8px; }
 .skip:focus { top: 1rem; }
 
 /* Árabe y georgiano: Inter no tiene esos alfabetos, se usa la fuente del sistema. */
@@ -91,6 +128,6 @@ bdi, a[href^='mailto:'] { unicode-bidi: isolate; }
 a[href^='mailto:'] { white-space: nowrap; }
 
 .card {
-  background: var(--charcoal); border: 1px solid var(--line);
+  background: var(--surface); border: 1px solid var(--line);
   border-radius: var(--radius); padding: 1.5rem;
 }

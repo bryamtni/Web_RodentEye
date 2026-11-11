@@ -4,38 +4,53 @@ Base: la guía de la app (`Docs/DESIGN_GUIDE.md` del proyecto RodeCam) y el logo
 
 ## Principios
 
-1. **Se tiene que sentir como la app.** Fondo casi negro, verde lima para la acción, texto blanco.
+1. **Se tiene que sentir como la app.** Verde lima para la acción y el negro de la marca en modo oscuro.
 2. **El texto se lee primero.** La mayoría de las visitas llegarán desde las tiendas a privacidad, soporte o eliminar cuenta: son páginas de lectura larga, así que se cuida el contraste, el ancho de línea (~70 caracteres) y el interlineado.
 3. **Sobrio.** Sin fotos de stock ni ilustraciones genéricas. Mientras no haya fotos reales de la cámara, la portada usa solo el logo.
 4. **Funciona en 13 idiomas, incluido el árabe** (derecha a izquierda). Ningún diseño depende de que el texto tenga cierto largo.
 
 ## Color
 
-Solo tema oscuro, como la marca. La app tiene modo claro, pero en la web el oscuro es la identidad y es lo que se ve en el logo.
+**Dos temas.** Bryam eligió el 2026-11-11 la opción B, porque con fondo negro costaba leer de día:
+- **Claro (por defecto):** fondo casi blanco con un toque verde, tarjetas blancas, botones lima con texto negro y enlaces en verde oscuro.
+- **Oscuro:** el negro de la marca. Se activa solo cuando el teléfono o el computador están en modo oscuro (`prefers-color-scheme: dark`).
 
-| Token CSS | Hex | Uso en la web | Origen |
+Se descartaron:
+- **A:** el fondo `#EDFFC4` del modo claro de la app. Cansaba en textos largos y el botón lima no se distinguía del fondo.
+- **C:** gris oscuro. De día seguía siendo oscuro.
+
+Los colores se usan por **función**, no por nombre. Para cambiar un color se toca el token en `src/styles/global.css`; los componentes no tienen colores fijos.
+
+| Token | Claro | Oscuro | Uso |
 |---|---|---|---|
-| `--black` | `#0D0D0D` | Fondo de página | `--surface-0` de la app |
-| `--charcoal` | `#1C1C1C` | Tarjetas, pie de página | `--surface-2` |
-| `--charcoal-2` | `#262626` | Hover de tarjetas, menú desplegable | ≈ `--surface-3` |
-| `--line` | `#333333` | Bordes y divisores | entre `--surface-4` y `--surface-5` |
-| `--green` | `#AAED26` | Botón principal, enlaces, acentos | Verde de marca |
-| `--green-hover` | `#C0F450` | Hover del verde | `--green-400` |
-| `--green-dark` | `#1A3305` | Velo del degradado del hero | `--green-900` |
-| `--white` | `#FFFFFF` | Títulos y texto destacado | `--text-primary` |
-| `--gray` | `#C4C4C4` | Texto de cuerpo | `--text-secondary` |
-| `--muted` | `#9A9A9A` | Fechas, notas, texto legal pequeño | Ajustado desde `#888` de la app (4.8:1 sobre `#1C1C1C`) a 6.1:1, para tener margen en texto pequeño |
+| `--bg` | `#F7F9F3` | `#0D0D0D` | Fondo de página |
+| `--surface` | `#FFFFFF` | `#1C1C1C` | Tarjetas, pie |
+| `--surface-2` | `#FFFFFF` | `#262626` | Menú de idiomas |
+| `--line` | `#E1E6D8` | `#333333` | Bordes y divisores |
+| `--text` | `#2E3529` | `#C4C4C4` | Texto de cuerpo |
+| `--heading` | `#0D0D0D` | `#FFFFFF` | Títulos, negritas |
+| `--muted` | `#5F6758` | `#9A9A9A` | Fechas, notas |
+| `--link` | `#3D6B0C` | `#AAED26` | Enlaces y textos verdes (etiquetas, "EYE" del logo) |
+| `--accent` | `#AAED26` | `#AAED26` | Fondo del botón principal |
+| `--on-accent` | `#0D0D0D` | `#0D0D0D` | Texto sobre el botón lima |
+| `--rule` | `#AAED26` | `#AAED26` | Raya decorativa de las funciones |
 
-**Contraste (WCAG AA, mínimo 4.5:1 en texto normal):**
-- `#C4C4C4` sobre `#0D0D0D`: 11.1:1. `#9A9A9A` sobre `#1C1C1C`: 6.1:1.
-- `#AAED26` sobre `#0D0D0D`: 13.7:1, válido para enlaces.
-- En botones verdes el texto va **negro** (`#0D0D0D`), nunca blanco (regla de la app).
+**Contraste (WCAG AA, mínimo 4.5:1, medido):**
+
+| Combinación | Claro | Oscuro |
+|---|---|---|
+| Texto sobre fondo | 12.0:1 | 11.1:1 |
+| Gris (`--muted`) sobre fondo | 5.6:1 | 6.9:1 |
+| Enlace sobre fondo | 6.0:1 | 13.7:1 |
+| Negro sobre el botón lima | 13.7:1 | 13.7:1 |
+
+**El verde lima nunca va como color de texto en el tema claro.** Sobre fondo claro tiene contraste 1.3:1 y no se lee. Ahí el verde de texto es `#3D6B0C` (el `--green-700` de la app, un poco más oscuro).
 
 **Qué no se usa en la web:** el rojo de alerta, el teal, el azul y los acentos de gráficas de la app. Son colores de estado dentro de la app y en un sitio informativo solo agregarían ruido.
 
 **Reglas que se mantienen de la app:**
-- El verde lima solo en lo que se puede tocar o en acentos pequeños. Nunca como fondo de una sección entera.
-- Máximo un acento (verde) por pantalla.
+- El lima solo en lo que se puede tocar o en acentos pequeños. Nunca como fondo de una sección entera.
+- En botones lima el texto va negro.
 
 ## Tipografía
 

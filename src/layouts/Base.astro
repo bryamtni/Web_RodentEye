@@ -38,7 +38,8 @@ const noindex = import.meta.env.PUBLIC_NOINDEX === 'true';
     )}
     <link rel="icon" type="image/png" href={asset('favicon.png')} />
     <link rel="apple-touch-icon" href={asset('apple-touch-icon.png')} />
-    <meta name="theme-color" content="#0d0d0d" />
+    <meta name="theme-color" content="#f7f9f3" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0d0d0d" media="(prefers-color-scheme: dark)" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Rodent Eye" />
     <meta property="og:title" content={fullTitle} />

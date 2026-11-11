@@ -80,17 +80,17 @@ const stores = [
 
 <style>
   .hero { padding: 72px 0 56px; border-bottom: 1px solid var(--line);
-    background: radial-gradient(60% 80% at 85% 40%, rgba(170, 237, 38, .10), transparent 70%); }
-  :global([dir='rtl']) .hero { background: radial-gradient(60% 80% at 15% 40%, rgba(170, 237, 38, .10), transparent 70%); }
+    background: radial-gradient(60% 80% at 85% 40%, var(--glow), transparent 70%); }
+  :global([dir='rtl']) .hero { background: radial-gradient(60% 80% at 15% 40%, var(--glow), transparent 70%); }
   .hero-grid { display: grid; gap: 48px; align-items: center; }
   @media (min-width: 860px) { .hero-grid { grid-template-columns: 1.3fr 1fr; } }
-  .accent { color: var(--green); }
+  .accent { color: var(--link); }
   .lead { font-size: 1.12rem; max-width: 560px; }
   .actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
   .hero-art { position: relative; display: grid; place-items: center; min-height: 260px; }
   .hero-art img { width: 160px; border-radius: 50%; position: relative; }
   .ring { position: absolute; width: 240px; height: 240px; border-radius: 50%;
-    border: 1px solid rgba(170, 237, 38, .45); box-shadow: 0 0 0 40px rgba(170, 237, 38, .04), 0 0 0 80px rgba(170, 237, 38, .025); }
+    border: 1px solid var(--ring); box-shadow: 0 0 0 40px var(--ring-halo), 0 0 0 80px var(--ring-halo); }
   @media (prefers-reduced-motion: no-preference) {
     .ring { animation: pulse 3.2s ease-in-out infinite; }
     @keyframes pulse { 50% { transform: scale(1.06); opacity: .7; } }
@@ -99,12 +99,12 @@ const stores = [
   .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
   @media (min-width: 640px) { .steps { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 1000px) { .steps { grid-template-columns: repeat(4, 1fr); } }
-  .num { font: 500 .85rem var(--font-mono); color: var(--green); display: block; margin-bottom: .8rem; }
+  .num { font: 500 .85rem var(--font-mono); color: var(--link); display: block; margin-bottom: .8rem; }
   .steps p, .features p { margin: 0; }
   .features { list-style: none; padding: 0; margin: 0; display: grid; gap: 28px 32px; }
   @media (min-width: 640px) { .features { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 960px) { .features { grid-template-columns: repeat(3, 1fr); } }
-  .features li { border-inline-start: 2px solid var(--green); padding-inline-start: 1rem; }
+  .features li { border-inline-start: 2px solid var(--rule); padding-inline-start: 1rem; }
   .features h3 { margin-bottom: .3em; }
   .download { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; }
   .download h2 { margin-bottom: .2em; }
