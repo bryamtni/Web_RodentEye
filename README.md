@@ -31,7 +31,7 @@ npm run preview   # sirve dist/ localmente
 
 ## Despliegue
 
-**Pruebas — GitHub Pages:** cada push a `main` ejecuta `.github/workflows/pages.yml`. El workflow compila con `BASE_PATH=/Web_RodentEye/` y marca el sitio como `noindex`.
+**Pruebas — GitHub Pages:** https://bryamtni.github.io/Web_RodentEye/ (repo público mientras dure el desarrollo; pasarlo a privado al salir a producción). Cada push a `main` ejecuta `.github/workflows/pages.yml`. El workflow compila con `BASE_PATH=/Web_RodentEye/` y marca el sitio como `noindex`.
 
 **Producción — IIS de la empresa:**
 1. `npm run build` (sin variables: `site` = `https://rodent-eye.com`, base `/`). Si el dominio cambia, ajustar `site` en `astro.config.mjs`.
