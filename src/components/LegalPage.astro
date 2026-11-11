@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import Blocks from './Blocks.astro';
+import { type Lang, type LegalDoc, defaultLang, getDict } from '../i18n';
+import { SITE } from '../config';
+interface Props { lang: Lang; page: string; doc: LegalDoc }
+const { lang, page, doc } = Astro.props;
+const t = getDict(lang);
+---
+<Base lang={lang} page={page} title={doc.title} description={doc.description}>
+  <article class="container prose">
+    <h1>{doc.title}</h1>
+    <p class="meta">{t.common.updated}: <time datetime={SITE.lastUpdated}>{SITE.lastUpdated}</time></p>
+    {SITE.legalDraft && <p class="draft" role="note">{t.common.draft}</p>}
+    {lang !== defaultLang && t.common.translationNote && <p class="note">{t.common.translationNote}</p>}
+    <Blocks lang={lang} blocks={doc.intro} />
+    <slot />
+    {doc.sections.map((s) => (
+      <section>
+        <h2>{s.heading}</h2>
+        <Blocks lang={lang} blocks={s.blocks} />
+      </section>
+    ))}
+  </article>
+</Base>

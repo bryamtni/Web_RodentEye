@@ -10,7 +10,7 @@
   --white: #ffffff;
   --gray: #c4c4c4;
   --muted: #9a9a9a;
-  --font-sans: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-sans: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', 'Noto Sans', sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
   --radius: 14px;
   --max: 1120px;
@@ -62,7 +62,7 @@ p { margin: 0 0 1em; }
 .prose { max-width: 760px; padding-top: 56px; padding-bottom: 80px; }
 .prose h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
 .prose h2 { font-size: 1.3rem; margin-top: 2.2em; }
-.prose ul { padding-left: 1.2em; }
+.prose ul, .prose ol { padding-inline-start: 1.3em; }
 .prose li { margin-bottom: .4em; }
 .prose strong { color: var(--white); }
 .prose .meta { color: var(--muted); font-size: .9rem; }
@@ -71,6 +71,25 @@ p { margin: 0 0 1em; }
   background: rgba(170, 237, 38, .06);
   padding: .7rem 1rem; border-radius: 10px; font-size: .9rem; margin-bottom: 2rem;
 }
+.note { color: var(--muted); font-size: .88rem; margin-bottom: 2rem; }
+.prose section h2 { scroll-margin-top: 80px; }
+
+.skip { position: absolute; inset-inline-start: 1rem; top: -100px; z-index: 20; background: var(--green); color: var(--black); padding: .5rem 1rem; border-radius: 8px; }
+.skip:focus { top: 1rem; }
+
+/* Árabe y georgiano: Inter no tiene esos alfabetos, se usa la fuente del sistema. */
+:lang(ar) body, :lang(ka) body { font-family: system-ui, -apple-system, 'Segoe UI', 'Noto Sans', sans-serif; }
+/* La mono de marca no tiene esos alfabetos, el espaciado rompe la escritura árabe
+   y text-transform convierte el georgiano a Mtavruli. */
+:lang(ar) :is(.eyebrow, .tag), :lang(ka) :is(.eyebrow, .tag) {
+  font-family: inherit; letter-spacing: 0; text-transform: none;
+}
+:lang(ar) :is(h1, h2, h3) { letter-spacing: 0; }
+
+/* Nombres y correos en latín dentro de texto de derecha a izquierda */
+bdi, a[href^='mailto:'] { unicode-bidi: isolate; }
+a[href^='mailto:'] { white-space: nowrap; }
+
 .card {
   background: var(--charcoal); border: 1px solid var(--line);
   border-radius: var(--radius); padding: 1.5rem;

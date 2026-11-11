@@ -1,29 +1,7 @@
 ---
-// BORRADOR mínimo. Si no se publica un EULA propio, Apple aplica su EULA estándar.
-import Base from '../../layouts/Base.astro';
-import LegalHeader from '../../components/LegalHeader.astro';
-import { type Lang, langPaths } from '../../i18n/ui';
-import { SITE } from '../../config';
-
+import LegalPage from '../../components/LegalPage.astro';
+import { type Lang, langPaths, getDict } from '../../i18n';
 export const getStaticPaths = langPaths;
 const { lang } = Astro.props as { lang: Lang };
-const mail = SITE.supportEmail;
-const es = lang === 'es';
 ---
-<Base lang={lang} page="terms" title={es ? 'Términos de uso' : 'Terms of use'}
-  description={es ? 'Términos de uso de la app y las cámaras Rodent Eye.' : 'Terms of use for the Rodent Eye app and cameras.'}>
-  <article class="container prose">
-    <LegalHeader lang={lang} title={es ? 'Términos de uso' : 'Terms of use'} />
-    {es ? (
-      <>
-        <p>Pendiente: texto de términos de uso a definir con el área legal de {SITE.company}.</p>
-        <p>Consultas: <a href={`mailto:${mail}`}>{mail}</a>.</p>
-      </>
-    ) : (
-      <>
-        <p>Pending: terms of use to be defined with {SITE.company}’s legal team.</p>
-        <p>Questions: <a href={`mailto:${mail}`}>{mail}</a>.</p>
-      </>
-    )}
-  </article>
-</Base>
+<LegalPage lang={lang} page="terms" doc={getDict(lang).terms} />

@@ -1,12 +1,14 @@
 ---
 import Base from '../layouts/Base.astro';
-import { t, url } from '../i18n/ui';
+import { getDict, url } from '../i18n';
+const t = getDict('en').notFound;
+const es = getDict('es').notFound;
 ---
-<Base lang="en" page="404" title={t('en', 'notfound.title')} description={t('en', 'notfound.body')}>
+<Base lang="en" page="404" title={t.title} description={t.body}>
   <div class="container prose">
-    <h1>{t('en', 'notfound.title')}</h1>
-    <p>{t('en', 'notfound.body')}</p>
-    <p lang="es">{t('es', 'notfound.body')}</p>
-    <p><a class="btn btn-primary" href={url('en')}>{t('en', 'notfound.back')}</a></p>
+    <h1>{t.title}</h1>
+    <p>{t.body}</p>
+    <p lang="es">{es.body}</p>
+    <p><a class="btn btn-primary" href={url('en')}>{t.back}</a></p>
   </div>
 </Base>

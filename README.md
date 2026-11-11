@@ -3,7 +3,8 @@
 Sitio público de **Rodent Eye** en `https://rodent-eye.com` (dominio confirmado por Juan el 2026-11-11; se aloja en el IIS del servidor de TICAM). **El sitio no debe mencionar TN ni tnipest en ningún lugar.** Lo exigen las tiendas: privacidad, soporte y eliminación de cuenta. Propuesta completa en `Docs/SITIO_WEB_RODENT_EYE.md` del proyecto RodeCam.
 
 - **Astro 6** genera HTML estático en `dist/`. No hay código de servidor ni base de datos.
-- Idiomas: inglés en `/`, español en `/es/`.
+- 13 idiomas: inglés en `/` y el resto en `/<código>/` (`/es/`, `/pt/`, `/ar/`…). El árabe se muestra de derecha a izquierda.
+- Diseño: [docs/DESIGN.md](docs/DESIGN.md). Textos, marca y requisitos de las tiendas: [docs/CONTENT.md](docs/CONTENT.md).
 - Requiere Node 22.12 o superior solo para compilar (el servidor no necesita Node).
 
 ## Comandos
@@ -11,7 +12,7 @@ Sitio público de **Rodent Eye** en `https://rodent-eye.com` (dominio confirmado
 ```sh
 npm install
 npm run dev       # http://localhost:4321
-npm run build     # genera dist/
+npm run build     # revisa tipos (astro check) y genera dist/
 npm run preview   # sirve dist/ localmente
 ```
 
@@ -19,9 +20,11 @@ npm run preview   # sirve dist/ localmente
 
 | Ruta | Qué hay |
 |---|---|
-| `src/config.ts` | Correo de soporte, razón social, enlaces a las tiendas |
-| `src/i18n/ui.ts` | Textos comunes EN/ES y helpers de rutas (`url`, `asset`) |
-| `src/pages/[...lang]/` | Una página por archivo; genera la versión EN y la ES |
+| `src/config.ts` | Correo de soporte, entidad legal, enlaces a las tiendas, aviso de borrador |
+| `src/i18n/locales/*.ts` | Todos los textos, un archivo por idioma; `en.ts` es la fuente |
+| `src/i18n/languages.ts` | Lista de idiomas (código, nombre, dirección) |
+| `src/i18n/index.ts` | Helpers: `getDict`, `url`, `asset`, `fill` (marcadores) |
+| `src/pages/[...lang]/` | Una página por archivo; genera la versión de cada idioma |
 | `src/layouts/Base.astro` | `<head>`, SEO, hreflang, encabezado y pie |
 | `src/styles/global.css` | Colores de la marca (de `Docs/DESIGN_GUIDE.md`) |
 | `public/web.config` | Configuración de IIS: HTTPS, 404, caché y cabeceras |

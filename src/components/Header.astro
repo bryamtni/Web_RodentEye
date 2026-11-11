@@ -1,22 +1,35 @@
 ---
 import Logo from './Logo.astro';
-import { type Lang, t, url } from '../i18n/ui';
+import { type Lang, languages, langCodes, getDict, url } from '../i18n';
 interface Props { lang: Lang; page: string }
 const { lang, page } = Astro.props;
-const other: Lang = lang === 'en' ? 'es' : 'en';
+const t = getDict(lang);
 const links = [
-  { page: 'support', label: t(lang, 'nav.support') },
-  { page: 'privacy', label: t(lang, 'nav.privacy') },
+  { page: 'support', label: t.nav.support },
+  { page: 'privacy', label: t.nav.privacy },
 ];
 ---
 <header class="site-header">
   <div class="container bar">
-    <a href={url(lang)} class="home" aria-label="Rodent Eye — {t(lang, 'nav.home')}"><Logo /></a>
-    <nav aria-label="Main">
+    <a href={url(lang)} class="home" aria-label={`Rodent Eye — ${t.nav.home}`}><Logo /></a>
+    <nav aria-label={t.nav.home}>
       {links.map((l) => (
         <a href={url(lang, l.page)} aria-current={page === l.page ? 'page' : undefined}>{l.label}</a>
       ))}
-      <a href={url(other, page)} hreflang={other} lang={other} class="lang">{t(lang, 'nav.switch')}</a>
+      <details class="lang">
+        <summary aria-label={t.nav.language}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>
+          <span>{lang.toUpperCase()}</span>
+        </summary>
+        <ul>
+          {langCodes.map((l) => (
+            <li>
+              <a href={url(l, page === '404' ? '' : page)} hreflang={languages[l].hreflang} lang={languages[l].hreflang}
+                aria-current={l === lang ? 'true' : undefined}>{languages[l].name}</a>
+            </li>
+          ))}
+        </ul>
+      </details>
     </nav>
   </div>
 </header>
@@ -24,16 +37,32 @@ const links = [
 <style>
   .site-header {
     position: sticky; top: 0; z-index: 10;
-    background: rgba(13, 13, 13, .85);
+    background: rgba(13, 13, 13, .88);
     backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--line);
   }
   .bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 64px; }
   .home { text-decoration: none; }
   nav { display: flex; align-items: center; gap: 1.1rem; font-size: .92rem; }
-  nav a { color: var(--gray); text-decoration: none; }
-  nav a:hover, nav a[aria-current='page'] { color: var(--white); }
-  .lang { border: 1px solid var(--line); border-radius: 999px; padding: .3rem .75rem; }
+  nav > a { color: var(--gray); text-decoration: none; }
+  nav > a:hover, nav > a[aria-current='page'] { color: var(--white); }
+  .lang { position: relative; }
+  .lang summary {
+    list-style: none; cursor: pointer; display: flex; align-items: center; gap: .4rem;
+    border: 1px solid var(--line); border-radius: 999px; padding: .3rem .7rem;
+    color: var(--gray); font: 500 .8rem var(--font-mono);
+  }
+  .lang summary::-webkit-details-marker { display: none; }
+  .lang[open] summary, .lang summary:hover { border-color: var(--green); color: var(--white); }
+  .lang ul {
+    position: absolute; inset-inline-end: 0; top: calc(100% + 8px); margin: 0; padding: .4rem;
+    list-style: none; min-width: 180px; max-height: 70vh; overflow: auto;
+    background: var(--charcoal-2); border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, .7);
+  }
+  .lang li a { display: block; padding: .45rem .7rem; border-radius: 8px; color: var(--gray); text-decoration: none; }
+  .lang li a:hover { background: var(--charcoal); color: var(--white); }
+  .lang li a[aria-current='true'] { color: var(--green); }
   @media (max-width: 560px) {
     .home :global(.word) { display: none; }
     nav { gap: .8rem; font-size: .85rem; }

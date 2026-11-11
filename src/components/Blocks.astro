@@ -1,0 +1,9 @@
+---
+// Muestra bloques de texto de los diccionarios: string = párrafo, arreglo = lista.
+import { type Lang, type Block, fill } from '../i18n';
+interface Props { lang: Lang; blocks: Block[] }
+const { lang, blocks } = Astro.props;
+---
+{blocks.map((b) => Array.isArray(b)
+  ? <ul>{b.map((item) => <li set:html={fill(item, lang)} />)}</ul>
+  : <p set:html={fill(b, lang)} />)}

@@ -1,61 +1,17 @@
 ---
-// Página obligatoria para Google Play: borrar la cuenta sin tener la app instalada.
-// BORRADOR: confirmar plazos y qué se conserva.
-import Base from '../../layouts/Base.astro';
-import LegalHeader from '../../components/LegalHeader.astro';
-import { type Lang, langPaths } from '../../i18n/ui';
+// Página obligatoria para Google Play: pedir el borrado sin tener la app instalada.
+import LegalPage from '../../components/LegalPage.astro';
+import { type Lang, langPaths, getDict } from '../../i18n';
 import { SITE } from '../../config';
-
 export const getStaticPaths = langPaths;
 const { lang } = Astro.props as { lang: Lang };
-const mail = SITE.supportEmail;
-const es = lang === 'es';
-const subject = encodeURIComponent(es ? 'Eliminar mi cuenta de Rodent Eye' : 'Delete my Rodent Eye account');
+const doc = getDict(lang).deleteAccount;
+const mailto = `mailto:${SITE.supportEmail}?subject=${encodeURIComponent(doc.emailSubject)}`;
 ---
-<Base lang={lang} page="delete-account" title={es ? 'Eliminar cuenta' : 'Delete your account'}
-  description={es ? 'Cómo eliminar tu cuenta de Rodent Eye y tus datos, con o sin la app.' : 'How to delete your Rodent Eye account and data, with or without the app.'}>
-  <article class="container prose">
-    <LegalHeader lang={lang} title={es ? 'Eliminar tu cuenta de Rodent Eye' : 'Delete your Rodent Eye account'} />
-    {es ? (
-      <>
-        <h2>Desde la app</h2>
-        <ol>
-          <li>Abre Rodent Eye e inicia sesión.</li>
-          <li>Ve a <strong>Perfil</strong>.</li>
-          <li>Toca <strong>Eliminar cuenta</strong> y confirma.</li>
-        </ol>
-        <h2>Sin la app</h2>
-        <p>Envíanos un correo desde la dirección con la que te registraste:</p>
-        <p><a class="btn btn-primary" href={`mailto:${mail}?subject=${subject}`}>{mail}</a></p>
-        <p>Por seguridad, solo atendemos solicitudes enviadas desde el correo de la cuenta.</p>
-        <h2>Qué se borra</h2>
-        <ul>
-          <li>Tus datos de cuenta (nombre, correo, teléfono).</li>
-          <li>Tus direcciones, cámaras y sus fotos y videos.</li>
-          <li>El registro de tu teléfono para notificaciones.</li>
-        </ul>
-        <p>Procesamos las solicitudes en un plazo máximo de 30 días.</p>
-      </>
-    ) : (
-      <>
-        <h2>From the app</h2>
-        <ol>
-          <li>Open Rodent Eye and sign in.</li>
-          <li>Go to <strong>Profile</strong>.</li>
-          <li>Tap <strong>Delete account</strong> and confirm.</li>
-        </ol>
-        <h2>Without the app</h2>
-        <p>Email us from the address you signed up with:</p>
-        <p><a class="btn btn-primary" href={`mailto:${mail}?subject=${subject}`}>{mail}</a></p>
-        <p>For your security, we only process requests sent from the account’s email address.</p>
-        <h2>What is deleted</h2>
-        <ul>
-          <li>Your account data (name, email, phone).</li>
-          <li>Your addresses, cameras and their photos and videos.</li>
-          <li>Your phone’s notification registration.</li>
-        </ul>
-        <p>We process requests within 30 days at most.</p>
-      </>
-    )}
-  </article>
-</Base>
+<LegalPage lang={lang} page="delete-account" doc={doc}>
+  <p class="cta"><a class="btn btn-primary" href={mailto}>{doc.button}</a></p>
+</LegalPage>
+
+<style>
+  .cta { margin: 1.5rem 0 0; }
+</style>

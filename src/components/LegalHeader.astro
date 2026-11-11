@@ -1,9 +1,0 @@
----
-import { type Lang, t } from '../i18n/ui';
-import { SITE } from '../config';
-interface Props { lang: Lang; title: string; draft?: boolean }
-const { lang, title, draft = true } = Astro.props;
----
-<h1>{title}</h1>
-<p class="meta">{t(lang, 'updated')}: {SITE.lastUpdated}</p>
-{draft && <p class="draft" role="note">{t(lang, 'draft')}</p>}

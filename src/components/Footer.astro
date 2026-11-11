@@ -1,26 +1,27 @@
 ---
 import Logo from './Logo.astro';
-import { type Lang, t, url } from '../i18n/ui';
+import { type Lang, getDict, url } from '../i18n';
 import { SITE } from '../config';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
+const t = getDict(lang);
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
   <div class="container cols">
     <div>
       <Logo size={30} />
-      <p class="tag">{t(lang, 'tagline')}</p>
+      <p class="tag">{t.common.tagline}</p>
     </div>
     <nav aria-label="Footer">
-      <a href={url(lang, 'support')}>{t(lang, 'nav.support')}</a>
-      <a href={url(lang, 'privacy')}>{t(lang, 'nav.privacy')}</a>
-      <a href={url(lang, 'terms')}>{t(lang, 'nav.terms')}</a>
-      <a href={url(lang, 'delete-account')}>{t(lang, 'nav.delete')}</a>
+      <a href={url(lang, 'support')}>{t.nav.support}</a>
+      <a href={url(lang, 'privacy')}>{t.nav.privacy}</a>
+      <a href={url(lang, 'terms')}>{t.nav.terms}</a>
+      <a href={url(lang, 'delete-account')}>{t.nav.deleteAccount}</a>
       <a href={`mailto:${SITE.supportEmail}`}>{SITE.supportEmail}</a>
     </nav>
   </div>
-  <div class="container legal">© {year} {SITE.company}. {t(lang, 'footer.rights')}</div>
+  <div class="container legal">© {year} Rodent Eye. {t.common.rights}</div>
 </footer>
 
 <style>

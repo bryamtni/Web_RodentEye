@@ -5,7 +5,7 @@ import '@fontsource/ibm-plex-mono/500.css';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { type Lang, url, asset } from '../i18n/ui';
+import { type Lang, languages, langCodes, defaultLang, getDict, url, asset } from '../i18n';
 
 interface Props {
   lang: Lang;
@@ -15,37 +15,42 @@ interface Props {
   description: string;
 }
 const { lang, page, title, description } = Astro.props;
-const other: Lang = lang === 'en' ? 'es' : 'en';
+const t = getDict(lang);
 const site = Astro.site!;
-const canonical = new URL(url(lang, page), site).href;
-const alternate = new URL(url(other, page), site).href;
+const abs = (l: Lang) => new URL(url(l, page), site).href;
 const fullTitle = page ? `${title} · Rodent Eye` : title;
 const noindex = import.meta.env.PUBLIC_NOINDEX === 'true';
 ---
 <!doctype html>
-<html lang={lang}>
+<html lang={languages[lang].hreflang} dir={languages[lang].dir}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
-    <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang={lang} href={canonical} />
-    <link rel="alternate" hreflang={other} href={alternate} />
+    {page !== '404' && (
+      <>
+        <link rel="canonical" href={abs(lang)} />
+        {langCodes.map((l) => <link rel="alternate" hreflang={languages[l].hreflang} href={abs(l)} />)}
+        <link rel="alternate" hreflang="x-default" href={abs(defaultLang)} />
+      </>
+    )}
     <link rel="icon" type="image/png" href={asset('favicon.png')} />
     <link rel="apple-touch-icon" href={asset('apple-touch-icon.png')} />
     <meta name="theme-color" content="#0d0d0d" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Rodent Eye" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonical} />
+    <meta property="og:url" content={abs(lang)} />
     <meta property="og:image" content={new URL(asset('img/og-image.jpg'), site).href} />
-    <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_US'} />
+    <meta property="og:locale" content={languages[lang].ogLocale} />
   </head>
   <body>
+    <a class="skip" href="#main">{t.common.skip}</a>
     <Header lang={lang} page={page} />
-    <main>
+    <main id="main">
       <slot />
     </main>
     <Footer lang={lang} />
