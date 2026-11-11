@@ -1,6 +1,6 @@
 # Web_RodentEye
 
-Sitio público de **Rodent Eye** (dominio previsto: `rodent-eye.com`, aún sin confirmar). Lo exigen las tiendas: privacidad, soporte y eliminación de cuenta. Propuesta completa en `Docs/SITIO_WEB_RODENT_EYE.md` del proyecto RodeCam.
+Sitio público de **Rodent Eye** en `https://rodent-eye.com` (dominio confirmado por Juan el 2026-11-11; se aloja en el IIS del servidor de TICAM). **El sitio no debe mencionar TN ni tnipest en ningún lugar.** Lo exigen las tiendas: privacidad, soporte y eliminación de cuenta. Propuesta completa en `Docs/SITIO_WEB_RODENT_EYE.md` del proyecto RodeCam.
 
 - **Astro 6** genera HTML estático en `dist/`. No hay código de servidor ni base de datos.
 - Idiomas: inglés en `/`, español en `/es/`.
@@ -33,13 +33,13 @@ npm run preview   # sirve dist/ localmente
 **Producción — IIS de la empresa:**
 1. `npm run build` (sin variables: `site` = `https://rodent-eye.com`, base `/`). Si el dominio cambia, ajustar `site` en `astro.config.mjs`.
 2. Copiar el contenido de `dist/` a la carpeta del sitio en IIS.
-3. Configurar el sitio IIS: Static Content, App Pool "No Managed Code", módulo URL Rewrite, certificado HTTPS.
+3. Sitio IIS propio: App Pool "No Managed Code", módulo URL Rewrite, enlaces para `rodent-eye.com` y `www.rodent-eye.com` (80 y 443 con SNI) y certificado HTTPS. `web.config` ya redirige www → `rodent-eye.com` y HTTP → HTTPS.
 
 ## Pendientes
 
-- [ ] Dominio definitivo (confirmar si `rodent-eye.com` es de la empresa)
-- [ ] Correo de soporte (`src/config.ts`; hoy dice `support@tnipest.com`)
-- [ ] Razón social exacta para los textos legales
+- [x] Dominio: `rodent-eye.com`
+- [ ] DNS, sitio IIS, certificado y buzón `support@rodent-eye.com` (solicitado a David y Sergio)
+- [ ] Entidad legal responsable para los textos legales (hoy solo dice "Rodent Eye")
 - [ ] Revisión legal de privacidad, eliminación de cuenta y términos; quitar el aviso de borrador (`LegalHeader`, `draft`)
 - [ ] Enlaces de App Store y Google Play cuando estén publicadas
 - [ ] Logo en vector original: hoy se usa `rodent-eye-icon.png` (512 px), y el SVG de `Assets/` es un calco con imperfecciones
