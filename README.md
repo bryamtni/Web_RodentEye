@@ -32,7 +32,7 @@ npm run preview   # sirve dist/ localmente
 
 **Producción — IIS de la empresa:**
 1. `npm run build` (sin variables: `site` = `https://rodent-eye.com`, base `/`). Si el dominio cambia, ajustar `site` en `astro.config.mjs`.
-2. Copiar el contenido de `dist/` a la carpeta del sitio en IIS.
+2. Copiar el contenido de `dist/` a `W:\DoItYourself\Web` (servidor de TICAM, junto a `ApiApplication` y `ApiCamera`). Copiar solo el contenido de `dist/`, no la carpeta misma.
 3. Sitio IIS propio: App Pool "No Managed Code", módulo URL Rewrite, enlaces para `rodent-eye.com` y `www.rodent-eye.com` (80 y 443 con SNI) y certificado HTTPS. `web.config` ya redirige www → `rodent-eye.com` y HTTP → HTTPS.
 
 ## Pendientes
