@@ -58,6 +58,12 @@ const pl: Dict = {
         body: 'Jeśli kamera potwierdzi aktywność, aplikacja pokaże firmy zwalczające szkodniki w pobliżu Twojego adresu.',
       },
     ],
+    screensTitle: 'Zobacz w aplikacji',
+    screens: [
+      { caption: 'Twoje kamery w jednym miejscu' },
+      { caption: 'Zdjęcie z każdego wykrycia' },
+      { caption: 'Każde zdarzenie, dzień po dniu' },
+    ],
     featuresTitle: 'Wszystko w jednej aplikacji',
     features: [
       { title: 'Natychmiastowe alerty', body: 'Powiadomienie push za każdym razem, gdy kamera wykryje ruch.' },

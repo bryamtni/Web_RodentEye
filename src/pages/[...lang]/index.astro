@@ -7,6 +7,8 @@ export const getStaticPaths = langPaths;
 const { lang } = Astro.props as { lang: Lang };
 const t = getDict(lang);
 const c = t.home;
+// Capturas reales de la app (cuenta demo de App Review), de Docs/AppStoreScreenshots/iPhone_6.9
+const screens = ['01_home', '02_camera_detail', '03_events'];
 const stores = [
   { label: t.common.appStore, href: SITE.appStoreUrl },
   { label: t.common.googlePlay, href: SITE.playStoreUrl },
@@ -43,6 +45,24 @@ const stores = [
           </li>
         ))}
       </ol>
+    </div>
+  </section>
+
+  <section id="screens" class="section">
+    <div class="container">
+      <h2>{c.screensTitle}</h2>
+      <ul class="screens">
+        {c.screens.map((sc, i) => (
+          <li>
+            <figure>
+              <div class="phone">
+                <img src={asset(`img/screens/${screens[i]}.webp`)} width="600" height="1304" alt={sc.caption} loading="lazy" decoding="async" />
+              </div>
+              <figcaption>{sc.caption}</figcaption>
+            </figure>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 
@@ -105,6 +125,27 @@ const stores = [
   @media (min-width: 1000px) { .steps { grid-template-columns: repeat(4, 1fr); } }
   .num { font: 500 .85rem var(--font-mono); color: var(--link); display: block; margin-bottom: .8rem; }
   .steps p, .features p { margin: 0; }
+  .screens {
+    list-style: none; margin: 0; padding: 4px 0 12px; display: grid; gap: 24px;
+    grid-template-columns: repeat(3, minmax(220px, 1fr)); justify-items: center;
+  }
+  .screens figure { margin: 0; text-align: center; }
+  .phone {
+    width: min(260px, 100%); padding: 8px; border-radius: 40px; background: #0d0d0d;
+    box-shadow: 0 0 0 1px var(--line), var(--shadow); margin-inline: auto;
+  }
+  .phone img { width: 100%; height: auto; border-radius: 32px; }
+  .screens figcaption { margin-top: 14px; color: var(--heading); font-weight: 600; }
+  /* En celular las capturas se deslizan de lado en vez de apilarse. */
+  @media (max-width: 760px) {
+    .screens {
+      grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 72%;
+      overflow-x: auto; scroll-snap-type: x mandatory; justify-items: stretch;
+      margin-inline: -16px; padding-inline: 16px; scrollbar-width: none;
+    }
+    .screens::-webkit-scrollbar { display: none; }
+    .screens li { scroll-snap-align: center; }
+  }
   .features { list-style: none; padding: 0; margin: 0; display: grid; gap: 28px 32px; }
   @media (min-width: 640px) { .features { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 960px) { .features { grid-template-columns: repeat(3, 1fr); } }

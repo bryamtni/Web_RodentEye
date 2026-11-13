@@ -58,6 +58,12 @@ const es: Dict = {
         body: 'Si la cámara confirma actividad, la app te muestra empresas de control de plagas cerca de tu dirección.',
       },
     ],
+    screensTitle: 'Así se ve en la app',
+    screens: [
+      { caption: 'Tus cámaras de un vistazo' },
+      { caption: 'La foto de cada detección' },
+      { caption: 'Cada evento, día a día' },
+    ],
     featuresTitle: 'Todo en una sola app',
     features: [
       { title: 'Alertas al instante', body: 'Una notificación cada vez que la cámara detecta movimiento.' },

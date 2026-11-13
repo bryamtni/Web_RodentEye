@@ -58,6 +58,12 @@ const pt: Dict = {
         body: 'Se a câmera confirmar atividade, o app mostra empresas de controle de pragas perto do seu endereço.',
       },
     ],
+    screensTitle: 'Veja no app',
+    screens: [
+      { caption: 'Suas câmeras num relance' },
+      { caption: 'A foto de cada detecção' },
+      { caption: 'Cada evento, dia a dia' },
+    ],
     featuresTitle: 'Tudo em um só app',
     features: [
       { title: 'Alertas instantâneos', body: 'Uma notificação push sempre que a câmera detecta movimento.' },

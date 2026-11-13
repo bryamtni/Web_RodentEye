@@ -58,6 +58,12 @@ const it: Dict = {
         body: 'Se la telecamera conferma l’attività, l’app ti mostra le aziende di disinfestazione vicine al tuo indirizzo.',
       },
     ],
+    screensTitle: 'Ecco l’app',
+    screens: [
+      { caption: 'Le tue telecamere a colpo d’occhio' },
+      { caption: 'La foto di ogni rilevamento' },
+      { caption: 'Ogni evento, giorno per giorno' },
+    ],
     featuresTitle: 'Tutto in un’unica app',
     features: [
       { title: 'Avvisi immediati', body: 'Una notifica push ogni volta che la telecamera rileva un movimento.' },

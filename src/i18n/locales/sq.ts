@@ -58,6 +58,12 @@ const sq: Dict = {
         body: 'Nëse kamera konfirmon aktivitet, aplikacioni ju tregon kompani të kontrollit të dëmtuesve pranë adresës suaj.',
       },
     ],
+    screensTitle: 'Shikojeni në aplikacion',
+    screens: [
+      { caption: 'Kamerat tuaja me një shikim' },
+      { caption: 'Fotoja e çdo zbulimi' },
+      { caption: 'Çdo ngjarje, ditë pas dite' },
+    ],
     featuresTitle: 'Gjithçka në një aplikacion',
     features: [
       { title: 'Njoftime të menjëhershme', body: 'Një njoftim push sa herë që kamera dallon lëvizje.' },

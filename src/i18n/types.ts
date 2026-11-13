@@ -36,6 +36,8 @@ export interface Dict {
     ctaSecondary: string;
     howTitle: string;
     steps: { title: string; body: string }[];
+    screensTitle: string;
+    screens: { caption: string }[];
     featuresTitle: string;
     features: { title: string; body: string }[];
     downloadTitle: string;

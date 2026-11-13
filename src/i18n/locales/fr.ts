@@ -58,6 +58,12 @@ const fr: Dict = {
         body: 'Si la caméra confirme une activité, l’app vous montre des entreprises de lutte antiparasitaire près de votre adresse.',
       },
     ],
+    screensTitle: 'Dans l’application',
+    screens: [
+      { caption: 'Vos caméras en un coup d’œil' },
+      { caption: 'La photo de chaque détection' },
+      { caption: 'Chaque événement, jour après jour' },
+    ],
     featuresTitle: 'Tout dans une seule app',
     features: [
       { title: 'Alertes instantanées', body: 'Une notification push chaque fois que la caméra détecte un mouvement.' },

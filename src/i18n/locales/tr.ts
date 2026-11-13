@@ -58,6 +58,12 @@ const tr: Dict = {
         body: 'Kamera hareketi doğrularsa uygulama, adresinize yakın haşere kontrol şirketlerini gösterir.',
       },
     ],
+    screensTitle: 'Uygulamada görün',
+    screens: [
+      { caption: 'Kameralarınız bir bakışta' },
+      { caption: 'Her algılamanın fotoğrafı' },
+      { caption: 'Her olay, gün gün' },
+    ],
     featuresTitle: 'Her şey tek bir uygulamada',
     features: [
       { title: 'Anında uyarılar', body: 'Kamera her hareket algıladığında bir anlık bildirim.' },

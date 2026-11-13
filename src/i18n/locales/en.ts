@@ -59,6 +59,12 @@ const en: Dict = {
         body: 'If the camera confirms activity, the app shows pest control companies near your address.',
       },
     ],
+    screensTitle: 'See it in the app',
+    screens: [
+      { caption: 'Your cameras at a glance' },
+      { caption: 'The photo of each detection' },
+      { caption: 'Every event, day by day' },
+    ],
     featuresTitle: 'Everything in one app',
     features: [
       { title: 'Instant alerts', body: 'A push notification every time the camera detects movement.' },
